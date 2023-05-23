@@ -6,7 +6,7 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:15:43 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/20 15:54:16 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:19:28 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ typedef struct t_start
 
 void	main2(t_complete *game, char **av);
 
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(char *s1, char *s2, t_complete *game);
 size_t	ft_strlen(char *s);
 int		ft_clean(char *str);
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, t_complete *game);
 
 char	*ft_strjoin2(char *s1, char *s2);
 int		count_nb(int n);
@@ -70,13 +70,13 @@ void	ft_bzero(void *s, size_t n);
 char	*ft_strstr(char *str, char *to_find);
 int		ft_strlenint(char *str);
 void	check_error(t_complete *game);
-char	*ft_strdup(const char *s);
+char	*ft_strdup(const char *s, t_complete *game);
 
 int		add_line(t_complete *game, char *line);
 int		taille_map(char *str);
 int		ft_map(t_complete *game, char **av);
 int		mon_exit(t_complete *game);
-int		ft_check_rect(char **map);
+void	ft_cr(t_complete *game, char *line);
 
 int		vertwall(t_complete *game);
 int		horiwall(t_complete *game);
@@ -95,7 +95,7 @@ int		right_move(t_complete *game, int i, int j);
 int		keyboard_ad(t_complete *game, int touche);
 int		ft_controls(int touche, t_complete *game);
 
-void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size, t_complete *game);
 char	**ft_copy_map(t_complete *game);
 int		ft_find_sol(char **map, t_complete *game, int x, int y);
 void	check_path(t_complete *game);

@@ -6,7 +6,7 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 21:22:44 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/19 21:26:31 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:59:32 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	check_error(t_complete *game)
 	character_valid(game);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(const char *s, t_complete *game)
 {
 	int		i;
 	int		len;
@@ -73,7 +73,7 @@ char	*ft_strdup(const char *s)
 		len++;
 	str = malloc (sizeof (*str) * (len + 1));
 	if (str == NULL)
-		return (NULL);
+		mon_exit_sans_image(game);
 	i = 0;
 	while (i < len)
 	{

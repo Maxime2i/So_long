@@ -6,7 +6,7 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:12:38 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/20 15:23:42 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:17:25 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	add_line(t_complete *game, char *line)
 	i = 0;
 	game->height++;
 	temp = malloc(sizeof (char *) * (game->height + 1));
+	if (!temp)
+		mon_exit_sans_image(game);
 	temp[game->height - 1] = NULL;
 	while (i < game->height - 1)
 	{
@@ -79,7 +81,7 @@ int	ft_map(t_complete *game, char **av)
 		return (0);
 	while (1)
 	{
-		map = get_next_line(game->fd);
+		map = get_next_line(game->fd, game);
 		if (!add_line(game, map))
 			break ;
 		ft_cr(game, map);

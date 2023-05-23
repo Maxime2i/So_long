@@ -6,13 +6,13 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 21:35:26 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/20 15:34:26 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:59:56 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size, t_complete *game)
 {
 	char	*dest;
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (malloc(0));
 	dest = malloc(nmemb * size);
 	if (!dest)
-		return (NULL);
+		mon_exit_sans_image(game);
 	ft_bzero((unsigned char *)dest, nmemb * size);
 	return (dest);
 }
@@ -31,12 +31,12 @@ char	**ft_copy_map(t_complete *game)
 	char	**grid;
 
 	i = 0;
-	grid = ft_calloc((game->height + 1), sizeof(char *));
+	grid = ft_calloc((game->height + 1), sizeof(char *), game);
 	if (!grid)
 		return (NULL);
 	while (i < game->height)
 	{
-		grid[i] = ft_strdup(game->map[i]);
+		grid[i] = ft_strdup(game->map[i], game);
 		if (!grid[i])
 		{
 			free(grid);

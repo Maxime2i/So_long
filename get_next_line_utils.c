@@ -6,13 +6,13 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:52:28 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/07 20:52:33 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:10:18 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, t_complete *game)
 {
 	char	*joined;
 	int		i;
@@ -22,7 +22,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (0);
 	joined = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!joined)
-		return (0);
+		mon_exit_sans_image(game);
 	i = 0;
 	while (s1 && s1[i])
 	{
@@ -37,6 +37,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	joined[i] = '\0';
 	if (s1)
 		free(s1);
+	game = game;
 	return (joined);
 }
 

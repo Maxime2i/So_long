@@ -6,7 +6,7 @@
 /*   By: mlangloi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:15:00 by mlangloi          #+#    #+#             */
-/*   Updated: 2023/05/20 15:49:27 by mlangloi         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:29:54 by mlangloi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ int	mon_exit_sans_image(t_complete *game)
 	int	line;
 
 	line = 0;
-	while (line < game->height)
-		free(game->map[line++]);
-	free(game->map);
+	if (game->map)
+	{
+		while (line < game->height)
+			free(game->map[line++]);
+		free(game->map);
+	}
 	exit(0);
 }
